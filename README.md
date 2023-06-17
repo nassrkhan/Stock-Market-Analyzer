@@ -1,2 +1,2 @@
-## Stock-Market-Analyzer
+# Stock-Market-Analyzer
  
