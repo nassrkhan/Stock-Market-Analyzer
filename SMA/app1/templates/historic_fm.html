@@ -1,0 +1,206 @@
+{% extends 'index.html' %}
+
+{% block title %}Historic Form{% endblock %}
+
+{% block head %}
+
+<style>
+      
+input[type=text], select
+{
+    width: 50%;
+    padding: 12px;
+    border: 1px solid rgb(7, 189, 235);
+    border-radius: 4px;
+    resize: vertical;
+    margin-left: 230px;
+}
+
+input[type=date]
+{
+    width: 50%;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    resize: vertical;
+    margin-left: 230px;
+}
+
+label 
+{
+    display: inline-block;
+    color: black;
+    margin-left: 80px;
+}
+
+input[type=submit] 
+{
+    background-color: #04AA6D;
+    width: 20%;
+    color: white;
+    padding: 10px 15px;
+    border: solid;
+    border-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-left: 150px;
+}
+
+input[type=submit]:hover 
+{
+    background-color: #036fd4;
+}
+
+input[type=reset] 
+{
+    background-color: #04AA6D;
+    color: white;
+    width: 20%;
+    padding: 10px 15px;
+    border: solid;
+    border-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+    margin-left: 150px;
+}
+
+input[type=reset]:hover 
+{
+    background-color: #036fd4;
+}
+
+.col-25 
+{
+    float: left;
+    width: 35%;
+    margin-top: 6px;
+    padding-left: 160px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.col-75 
+{
+    float: left;
+    width: 65%;
+    margin-top: 6px;
+    padding-right: 180px;
+}
+
+.row:after 
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.form_container {
+
+margin-top: 80px;
+width: 1100px;
+height: auto;
+position: fixed;
+}
+
+.containerz 
+{
+    border-radius: 5px;
+    background-color: rgb(0, 191, 255);
+    padding: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.fill {
+    text-align: center;
+    font-size: large;
+    font-style: italic;
+    font-weight:bold;
+    color: black;
+    padding-right: 250px;
+    padding-bottom: 50px;
+}
+
+.title {
+    text-align: center;
+    font-size: 34px;
+    color: #181818;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-decoration: underline;
+}
+
+</style>
+ 
+{% endblock %}
+
+{% block content %}
+
+<div class="messages_form">    
+{% include 'messages.html' %}
+</div>
+
+<div class="form_container">
+    <div class="containerz">
+        <h3 class="title">Historic Data Form</h3>
+        <form action="{% url 'historic_data' %}" method="post" required="yes">
+            {% csrf_token %}
+            <div class="row">
+                <label class="fill"> Please fill in the Form below to download "Historic Data"</label>
+                
+                <div class="col-25">
+                    <label for="startDate">Start Date</label>
+                </div>
+
+                <div class="col-75">
+                    <input type="date" id="start_date" name="startdate" min="2018-01-01" max="2020-12-31" required="yes">
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-25">
+                    <label for="end_date">End Date</label>
+                </div>
+
+                <div class="col-75">
+                    <input type="date" id="endDatePicker" name="enddate" min= "2018-01-01" required="yes">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="stock_companies">Stock Companies</label>
+                </div>
+                
+                <div class="col-75">
+                    <select id="stock_companies" name="stockcompanies" required>
+                        <option selected disabled value="">Select Stock</option>
+
+                        {% for symbol in comp %}
+                            <option> {{symbol}} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <br>
+
+            <div class="row">
+                <input type="reset" value="Reset">
+                
+                <input type="submit" value="Submit">
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

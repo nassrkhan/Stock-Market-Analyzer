@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+ 
+{% block title %}Prediction{% endblock %}
+ 
+{% block content %}
+ 
+{% if pre_dsg %}
+
+<div class="search_card">
+
+    <div class="five">
+        <h1>Stock Predictions!</h1>
+    </div>
+
+    <div class="prediction_graph">
+    
+        {{ pre_dsg|safe }}
+    
+    </div>
+
+    <form action="{% url 'data_download' %}" method="post" required="yes">
+        {% csrf_token %}
+        <div class="market_button">
+            <button type="submit" name="pre_btn" value="Download Data" class="btn-1" >Download Data</button>
+        </div>
+    </form>
+
+</div>
+
+{% else %}
+
+    <p>No graph was provided.</p>
+
+{% endif %}
+ 
+{% endblock %}

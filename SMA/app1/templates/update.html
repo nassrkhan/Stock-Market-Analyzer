@@ -1,0 +1,48 @@
+{% extends 'login_page.html' %}
+
+{% block title %}Forgot Password{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="forms-container">
+    
+    <div class="signin-signup">
+       
+        <form method="POST" action="{% url 'update' %}" class="sign-in-form">
+          {% csrf_token %}
+          <h2 class="title">Update Password</h2>
+          {% include 'messages.html' %}
+          
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" id="id_reg" >
+            <i class="far fa-eye" id="toggleReg" style="cursor: pointer;"></i>
+            </div>
+  
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password1" placeholder="Confirm Password" id="id_reg1" >
+                <i class="far fa-eye" id="toggleReg1" style="cursor: pointer;"></i>
+            </div>
+
+            <input type="hidden" name="user_id" value="{{user_id}}">
+
+          <input type="submit" value="Update Password" class="btn solid">
+        </form>
+  </div>
+</div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Forgot your Password?</h3>
+          <p>Don't Worry!<br> Just Enter your <strong>Credentials</strong> and we will send you a link to reset it.<br><br><br><br><br><br><br><br><br></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+{% endblock %}

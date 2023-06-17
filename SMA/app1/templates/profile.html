@@ -1,0 +1,131 @@
+{% extends 'index.html' %}
+
+{% block title %}Profile Page{% endblock %}
+
+{% block head %}
+
+<style>
+
+.wrapper {
+  max-width: 500px;
+  height: auto;
+  margin: 3rem auto;
+  margin-top: 90px;
+  background: #eceff1;
+  padding: 0 0 1rem;
+  position: relative;
+}
+
+.message {
+  text-align: center;
+}
+
+.form-header {
+  background: rgb(12, 161, 219);
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212121;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  position: relative;
+}
+
+.form-grp {
+  margin: 0 2rem 1rem;
+}
+
+.form-grp label {
+  display: block;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 0.875rem;
+  color: #212121;
+}
+
+.form-grp label.inline {
+  display: inline-block;
+  width: 100px;
+}
+
+.form-grp label.inline.right {
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] 
+{
+  padding: 0.75rem 0.875rem;
+  border-radius: 4px;
+  outline: 0;
+  color: #212121;
+  font-size: 0.875rem;
+  width: 100%;
+  border: 0.063rem solid #b0bec5;
+}
+
+input[type=submit] {
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem 0 0;
+  outline: 0;
+  border: 0;
+  background: #2196f3;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.25px;
+  /* transition: background 0.3s ease; */
+}
+
+input[type=submit]:hover {
+  background: #39a1f4;
+}
+    
+</style>
+ 
+{% endblock %}
+
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="message">  
+    {% include 'messages.html' %}
+  </div>  
+    <form class="form" action="{% url 'profile_update' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-header">
+            Edit Profile
+        </div>
+
+        <div class="form-grp">
+            <label>User Name</label>
+            <input type="text" name="username" placeholder="{{request.user}}" id="username" required="yes">
+        </div>
+
+        <div class="form-grp">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="{{request.user.email}}" id="email" required="yes">
+        </div>
+
+        <div class="form-grp">
+            <label>Password</label>
+            <input type="password" name="password1" placeholder="Password" id="id_reg" required="yes">
+        </div>
+
+        <div class="form-grp">
+            <label>Confirm Password</label>
+            <input type="password" name="password2" placeholder="Password" id="id_reg" required="yes">
+        </div>
+
+        <div class="form-grp">
+            <input type="submit" value="Update profile"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

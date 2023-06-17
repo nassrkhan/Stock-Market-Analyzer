@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}Market Charts{% endblock %}
+
+{% block head %} 
+{% endblock %}
+
+{% block content %}
+    {% if market_dsg %}
+
+<div class="search_card">
+    <div class="market_chart">    
+    
+        <div class="five">
+            <h1>Market Charts</h1>
+        </div>
+
+            {{ market_dsg|safe }}
+    
+        </div>
+</div>
+    {% else %}
+
+    <p>No graph was provided.</p>
+    
+    {% endif %}
+{% endblock %}
+              

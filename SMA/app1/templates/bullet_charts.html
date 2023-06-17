@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}Bullet Charts{% endblock %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block content %}
+
+        {% if bullet_dsg %}
+        
+        <div class="search_card">
+
+        <div class="market_bullet">
+
+        <div class="five">
+            <h1>Bullet Charts</h1>
+        </div>
+        
+        <div>
+            {{ bullet_dsg|safe }}
+        </div>
+    </div>
+        
+        {% else %}
+        
+        <p>No graph was provided.</p>
+        
+        {% endif %}
+    </div>
+{% endblock %}
+              

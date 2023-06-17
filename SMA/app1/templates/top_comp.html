@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}Top Companies{% endblock %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block content %}
+
+<div class="search_card">
+
+    <div class="five">
+        <h1>Top 10 Companies</h1>
+    </div>
+    
+        <div class="top_10">
+
+        {% if tt_com_dsg %}
+
+        <div>
+
+            {{ tt_com_dsg|safe }}
+
+        </div>
+</div>
+
+        {% else %}
+
+        <p>No graph was provided.</p>
+
+        {% endif %}
+    </div>
+{% endblock %}     
+              

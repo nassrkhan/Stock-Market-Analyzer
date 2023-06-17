@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}Candelistic{% endblock %}
+
+{% block content %}
+
+{% if can_dsg %}
+
+<div class="search_card">
+
+    <div class="candle_graph">
+
+        <div class="five">
+            <h1>Candle Stick Graph</h1>
+        </div>
+
+        {{ can_dsg|safe }}
+
+    </div>
+
+</div>
+
+{% else %}
+
+<p>No graph was provided.</p>
+
+{% endif %}
+
+{% endblock %}

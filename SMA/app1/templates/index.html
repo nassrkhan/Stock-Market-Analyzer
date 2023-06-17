@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>{% block title %}Dashboard{% endblock  %}</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="{% static '/CSS/index.css' %}">
+
+    <link rel="stylesheet" href="{% static '/CSS/aboutus.css' %}">
+
+    <link rel="shortcut icon" type="image/png" href="/static/images/favicon_2.png"/>
+    
+    {% block head %}
+
+    {% endblock %}
+    
+</head>
+
+<body onload="myFunction()">
+
+    <div id="loader"></div> 
+
+    <div id="loader_heading">
+        <h4>Loading...</h4>
+    </div>    
+    
+    <div id="absolute_div" class="newDiv">
+        
+        <div class="dashboard-wrap animate-bottom">
+
+        <div class="bodyClick">
+        
+            <div class="wrapper_style">
+                
+                    {% block content %}
+                <div class="five">
+                        <h1>Welcome to the Dashboard!</h1>
+                </div>
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="S-Sidebar-left">
+
+                <!-- logo and name -->
+                <div class="S-logo-wrap">
+                    <div class="S-logo">
+                        <a href="#">
+                            <img src="/static/images/favicon_2.png"
+                                alt="profileImg" />
+                            <a href="#">
+                                <h5>Stock Market Analyzer</h5>
+                                <h6>Welcome to the Website</h6>
+                            </a>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Main Menu -->
+
+                <div class="S-Nav-menu">
+                    <ul class="menu-links">
+                        
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'market_summary' %}"><i class="fa-sharp fa-solid fa-chart-column"></i></a>
+                                <a href="{% url 'market_summary' %}">
+                                    <h4>Market Summary</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'market_charts' %}"><i class="fa-solid fa-chart-area"></i></a>
+                                <a href="{% url 'market_charts' %}">
+                                    <h4>Market Charts</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'bullet_charts' %}"><i class="fa-sharp fa-solid fa-bars-progress"></i></a>
+                                <a href="{% url 'bullet_charts' %}">
+                                    <h4>Bullet Charts</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'pie_charts' %}"><i class="fa-sharp fa-solid fa-chart-pie"></i></a>
+                                <a href="{% url 'pie_charts' %}">
+                                    <h4>Pie Charts</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'top_comp' %}"><i class="fa-sharp fa-solid fa-ranking-star"></i></a>
+                                <a href="{% url 'top_comp' %}">
+                                    <h4>Top 10 Comp.</h4>
+                                </a>
+                            </h3>
+                        </li>
+        
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'historic_fm' %}"><i class="fa-solid fa-square-poll-vertical"></i> </a>
+                                <a href="{% url 'historic_fm' %}">
+                                    <h4>Historic Data</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'candelistic' %}"><i class="fa-sharp fa-solid fa-chart-line"></i></a>
+                                <a href="{% url 'candelistic' %}">
+                                    <h4>Candle Chart</h4>
+                                </a>
+                            </h3>
+                        </li>
+    
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'predictions' %}"><i class="fa-solid fa-money-bill-trend-up"></i></a>
+                                <a href="{% url 'predictions' %}">
+                                    <h4>Predictions</h4>
+                                </a>
+                            </h3>
+                        </li>
+
+                        <!-- expand down -->
+
+                        <li class="menu-li plus-sub" id="click-li">
+                            <div class="Sub-S-wrap">
+                                <h3>
+                                    <a href="#"><i class="fa-solid fa-gear"></i></a>
+                                    <a href="#">
+                                        <h4>Settings</h4>
+                                    </a>
+                                </h3>
+                                <span class="up-down-arrow" id="plus-sub">
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </span>
+                            </div>
+                            <div class="S-sub-menu" id="S-sub-menu">
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-user"></i>
+                                        <a href="{% url 'profile' %}">Profile</a>
+                                    </li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="menu-li">
+                            <h3>
+                                <a href="{% url 'aboutus' %}"><i class="fa-solid fa-circle-question"></i></a>
+                                <a href="{% url 'aboutus' %}">
+                                    <h4>About us</h4>
+                                </a>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-----::::::::::::::::::::: main content ::::::::::::::::::::::::----->
+                                    
+            <!-- main content -->
+
+            <section class="S-navbar-section"> 
+               
+               <div>
+                <nav class="S-nav">
+                    
+                    <div class="S-nav-left">
+                        <div class="S-hambargur hambergurOne" id="hambergurOne">
+                            <i class="fa-solid fa-list"></i>
+                        </div>
+                    </div>
+
+                <!-- nav-middle -->
+                    <div class="S-search-box">
+                        <form action="{% url 'stock_search' %}" method="post" class="search-box">
+                            {% csrf_token %}
+                            <input type="search" class="s-search" name="searched" id="search" placeholder="Search here..." />
+                            <button type="submit"  class="S-search-btn">
+                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+    
+                    <!-- nav-right -->
+
+                    <div class="nav-right">
+                    <!-- S-right-prof -->
+                        <div class="S-right-prof">
+                            <a class="prof-cntnt-btn"><img
+                                    src="/static/images/favicon_2.png"
+                                    alt="profileImg" /></a>
+    
+
+                            <!-- Click Content Card -->
+
+                            <div class="click-content" id="click-content-two">
+                                <div class="S-Click-img m-0 px-3">
+                                    <a href="{% url 'index' %}" class="S-btn d-flex align-items-center">
+                                        <img src="/static/images/favicon_2.png"alt="profileImg" />
+                                    </a>
+                                    <div class="name-and-email">
+                                        <h4>Hey, {{request.user}}!</h4>
+                                        <h4>Email: {{request.user.email}}</h4>
+                                    </div>
+                                </div>
+                                <div class="S-person S-prof px-3">
+                                    <a href="{% url 'profile' %}" class="d-flex align-items-center py-3">
+                                        <span class="cntnt-icon">
+                                            <i class="fa-solid fa-user"></i>
+                                        </span>
+                                        <h5 class="pl-3">User Profile</h5>
+                                    </a>
+                                </div>
+                                <div class="S-person S-prev px-3">
+                                    <a href="{% url 'logout' %}" class="d-flex align-items-center py-3">
+                                        <span class="cntnt-icon"><i
+                                                class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></span>
+                                        <h5 class="pl-3">Logout</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        </div>  
+    </div>
+
+</body>
+
+</html>
+
+
+{% block script %}
+
+<script src="{% static '/JS/index.js' %}"></script>
+
+<script src="{% static '/JS/aboutus.js' %}"></script>
+
+{% endblock %}

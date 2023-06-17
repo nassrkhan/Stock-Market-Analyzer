@@ -1,0 +1,51 @@
+{% extends 'login_page.html' %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'login_signup' %}" class="sign-in-form">
+          {% csrf_token %}
+          <h2 class="title">Login</h2>
+          
+          {% include 'messages.html' %}
+
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Username" required="yes">
+          </div>
+          
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" id="id_password" required="yes">
+            <i class="far fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+          </div>
+          
+          <a class="pass" href="{% url 'forgot_password' %}">Forgot your password?</a>
+          
+          <input type="submit" value="Sign in" class="btn solid">
+        </form>
+  </div>
+</div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>You don't have an account?</h3>
+          <p>Click Below to create your account and check out all of our latest features!</p>
+          <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+          <button class="btn transparent">Register
+          </button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

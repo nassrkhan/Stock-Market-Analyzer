@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+
+  {% block title %}About Us{% endblock  %}
+
+  {% block head %} 
+
+  {% endblock %}
+
+  {% block content %}
+
+   <!-- ************************** Start of Header Part *************************** -->
+
+   <div class="header" id="top_header">
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+    </nav>
+
+    <section class="header-section">
+
+      <div class="center-div">
+
+        <h1 class="font-weight-bold">Welcome to Stock Market Analyzer</h1>
+        <p>Where Predictions Begin</p>
+
+        <!-- <div class="header-buttons">
+          <a class="top-link" data-value="main-container" href="#">Our Services</a>
+          <a class="top-link" data-value="container" href="#">Contact us</a> 
+          <a class="top-link" data-value="container" href="{% url 'index' %}">Back to Dashboard</a>
+        </div> -->
+
+      </div>
+
+    </section>
+  </div>
+
+<!-- ************************** End of Header Part ************************* -->
+
+<!-- ***************************** Start of Three Extra divs **************************** -->
+
+<div class="five"><h1>Our Services</h1></div>
+
+<div class="main-container" id="main-container">
+
+    <div class="card purple border">
+        <h2>Stock Predictions</h2>
+        <p>One of the "Main Feature" we provide in our system is Predicting Stocks. Yes, you heard it right! With our system you can predict Stocks Rate for the upcoming future for over 500+ Comoanies throughout Pakistan.</p>
+    </div>
+    <div class="card yellow border">
+        <h2>Stock Market Analysis</h2>
+        <p>With our Advanced System, users can view Todays Live Stock Market Summary along with their changes for the day and comparison as well! </p>
+    </div>
+    <div class="card green border">
+        <h2>Download Historic Data</h2>
+        <p>Another one of our Main Feature is the Historic Data Download Feature. This feature provides the ability to download historic data, that is the old data stored in the Pakistan's Stock Market, and allow users to download it directly in the form of a csv file.</p>
+    </div>
+</div>
+
+
+<!-- **************************** End of Three Extra divs **************************** -->
+
+{% endblock %}
+
+
+

@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block title %}Historic Data{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if h_table_dsg %}
+
+<div class="search_card">
+
+    <div class="market_containter">
+
+        <div class="five">
+            <h1>Historic Data</h1>
+        </div>
+        
+        {{ h_table_dsg|safe }}
+
+
+        <form action="{% url 'data_download' %}" method="post" required="yes">
+            {% csrf_token %}
+            <div class="market_button">
+                <button type="submit" name="his_btn" value="Download Data" class="btn-1" >Download Data</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<p>No graph was provided.</p>
+
+{% endif %}
+
+{% endblock %}

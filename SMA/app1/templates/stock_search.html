@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block title %}Today's Stock Market{% endblock %}
+
+{% block head %}  
+
+{% endblock %}
+
+{% block content %}
+
+<div class="search_card">
+    <center>
+        
+        {% if searched %}
+        
+        <div class="five">
+           <h1>You Searched For "{{ searched }}"</h1>
+        </div>
+           <br>
+           
+           {% for com in companies %}
+                {{com}} - {{com.name}}
+           
+                <br>
+                Sector - {{com.sectorName}}
+           
+                <br>
+           {% endfor %}
+
+        {% else %} 
+           
+            <h1> Forgot to Search</h1>  
+        
+        {% endif %}
+    </center>
+</div>
+
+
+{% endblock %}
